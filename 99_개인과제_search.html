@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인과제_search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">K - Relic</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a onclick="f_home()" class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a onclick="f_list()" class="nav-link" href="#">유물 종류</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                유뮬이란?
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a onclick="f_relic()" class="dropdown-item" href="#">유물</a></li>
+                                <hr class="dropdown-divider">
+                                <li><a onclick="f_about()" class="dropdown-item" href="#">문화재 축제</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a onclick="f_login()" class="nav-link" href="#">로그인</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        function f_list() {
+            window.location.href = '99_개인과제_종류리스트.html';
+        }
+
+        function f_relic() {
+            window.location.href = '99_개인과제_about.html';
+        }
+
+        function f_login() {
+            window.location.href = '99_개인과제_로그인.html';
+        }
+
+        function f_home() {
+            window.location.href = 'home.html';
+        }
+
+        function f_about() {
+            window.location.href = '99_개인과제_유물에대해.html';
+        }
+
+        function f_search() {
+            window.location.href = '99_개인과제_search.html';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인과제_about</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <style>
+        .div {
+            border: 1px solid red;
+        }
+
+        .modal2 {
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 2;
+            background-color: white;
+        }
+
+        .align-end {
+            text-align: end;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        @keyframes middle {
+            0% {
+                width: 0px;
+                height: 0px;
+                transform: translate(-50%, 0);
+            }
+
+            100% {
+                width: 600px;
+                height: 400px;
+                /* transform: translate(-50%, 0); */
+            }
+        }
+
+        .middle-modal {
+            animation: middle 1s forwards;
+        }
+        .modal-content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">K - Relic</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a onclick="f_home()" class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a onclick="f_list()" class="nav-link" href="#">유물 종류</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                유뮬이란?
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a onclick="f_relic()" class="dropdown-item" href="#">유물</a></li>
+                                <hr class="dropdown-divider">
+                                <li><a onclick="f_about()" class="dropdown-item" href="#">문화재 축제</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a onclick="f_login()" class="nav-link" href="#">로그인</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <p>충청남도 부여 문화재 종류</p>
+    <!-- 중앙에서 나오는 모달창 -->
+    <div class="modal2 middle-modal d-none">
+        <div class="align-end">
+            <img onclick="f_close2()" width="50" height="50" src="../resources/images/이미지/mugiwara.webp" alt="">
+        </div>
+        <div class="modal-content-wrapper"> <!-- 추가한 div -->
+            <div class="modal_img">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;"
+                src="https://www.goodmorningcc.com/news/photo/202201/262652_280421_644.jpg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 성주사지 남혜화상탑비</h5>
+                <p class="card-text">1962년 12월 20일<br>통일신라 / 국보 <br> 국유</p>
+                <a onclick="f_middle()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic2.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 성주사지 5층 석탑</h5>
+                <p class="card-text">1962년 01월 21일 <br> 통일신라 / 보물 <br> 국유</p>
+                <a onclick="f_middle2()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 300px; height: 250px;" src="../resources/images/이미지/relic3.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 성주사지 서 3층 석탑</h5>
+                <p class="card-text">2019년 03월 28일 <br> 신라 / 보물 <br> 국유</p>
+                <a onclick="f_middle3()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 300px; height: 250px;" src="../resources/images/이미지/relic4.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 성주사지 중앙 3층 석탑 </h5>
+                <p class="card-text"> 1963년 01월 21일 <br> 통일신라 / 보물 <br> 국유</p>
+                <a onclick="f_middle4()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-3">
+            <img style="width: 300px; height: 250px;" src="../resources/images/이미지/relic5.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">성주사지 동 3층 석탑</h5>
+                <p class="card-text">2019년 03월 28일 <br> 신라 / 보물 <br> 국유</p>
+                <a onclick="f_middle5()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic6.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 성주사지</h5>
+                <p class="card-text">1984년 08월 13일 <br> 통일신라 / 사적 <br> 보령시</p>
+                <a onclick="f_middle6()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic7.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 죽도 해저유물 매장해역</h5>
+                <p class="card-text">1987년 09월 18일 <br> 고려 / 사적 <br> 보령시</p>
+                <a onclick="f_middle7()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic8.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 충성수영성</h5>
+                <p class="card-text">2009년 08월 24일 <br> 조선 / 사적 <br> 보령시</p>
+                <a onclick="f_middle8()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic9.jpeg" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 외연도 상록수림</h5>
+                <p class="card-text">1962년 12월 07일 <br> 시기미상 / 천연기념물 <br> 보령시</p>
+                <a onclick="f_middle9()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic10.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">원홍주 등 6군상무사 단제비</h5>
+                <p class="card-text">1992년 07월 24일 <br> 조선시대 / 국가민속문화재 <br> 원홍주육군상무사</p>
+                <a onclick="f_middle10()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic11.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">선고인합동위령비</h5>
+                <p class="card-text">1992년 07월 24일 <br> 조선시대 / 국가민속문화재 <br> 원홍주육군상무사</p>
+                <a onclick="f_middle11()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic12.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">반수정건모한식제답기증기념비</h5>
+                <p class="card-text">1992년 07월 24일 <br> 조선시대 / 국가민속문화재 <br> 원홍주육군상무사</p>
+                <a onclick="f_middle12()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic13.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 청소역</h5>
+                <p class="card-text">2006년 12월 04일 <br> 1961년 / 등록문화재 <br> 한국철도공사</p>
+                <a onclick="f_middle13()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic14.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 수부리 및 이수</h5>
+                <p class="card-text">1974년 09월 01일 <br> 고려 / 유형문화재 <br>사유</p>
+                <a onclick="f_middle14()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic15.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">성주사지 석등</h5>
+                <p class="card-text">1974년 09월 01일 <br> 통일신라 / 道유형문화재 <br> 보령시</p>
+                <a onclick="f_middle15()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic16.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 관아문</h5>
+                <p class="card-text">1976년 01월 08일 <br> 조선 / 道유형문화재 <br> 국유 </p>
+                <a onclick="f_middle16()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic17.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">대천한내돌다리</h5>
+                <p class="card-text">1992년 08월 17일 <br> 조선 / 道유형문화재 <br> 보령시</p>
+                <a onclick="f_middle17()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic18.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 금강암 석불 및 비편</h5>
+                <p class="card-text">2000년 09월 20일 <br> 조선 / 道유형문화재 <br>대한불교조계종 금강암</p>
+                <a onclick="f_middle18()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic19.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">보령 유격장군청덕비</h5>
+                <p class="card-text">2000년 09월 20일 <br> 조선 / 道유형문화재 <br> 보령시</p>
+                <a onclick="f_middle19()" href="#" class="btn btn-primary">더보기</a>
+            </div>
+        </div>
+        <div class="card col-3">
+            <img style="width: 400px; height: 250px;" src="../resources/images/이미지/relic20.jpeg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">충청수영 내삼문</h5>
+                <p class="card-text">2010년 12월 30일 <br> 조선 / 道유형문화재 <br> 보령시 </p>
+                <a onclick="f_middle20()" href="#" class="btn btn-primary"> 더보기 </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const v_modal2 = document.getElementsByClassName("modal2")[0];
+        const modalContent = document.getElementById("modalContent"); // 함수 외부에서 선언
+        const modalImage = document.getElementById("modalImage");
+
+        function f_middle() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "https://www.goodmorningcc.com/news/photo/202201/262652_280421_644.jpg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "국보 : 보령 성주사지 낭혜화상탑비 <br> 지정연도 : 1962년 12월 20일 <br> 통일신라 진성여왕 890년"; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle2() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic2.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제19호 : 성주사지 오층 석탑 <br> 지정연도 : 1963년 1월 12일 <br>성주사는『삼국사기』에 나오는 백제 법왕 때 창건한 <br> 오합사(烏合寺)가 이 절이었다고 한다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle3() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic3.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제47호 : 성주사지 서 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>주사지에서 금당터로 보이는 곳의 뒤쪽으로 나란히 서 있는 3기의 <br> 탑 중 가장 서쪽에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle4() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic4.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle5() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic5.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제2021호 : 성주사지 동 삼층 석탑 <br> 지정연도 : 2019년 3월 28일 <br>성주사터에 남아 있는 4기의 석탑 중 하나인 신라의 삼층석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle6() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic6.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle7() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic7.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle8() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic8.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle9() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic9.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle10() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic10.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle11() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic11.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle12() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic12.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle13() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic13.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle14() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic14.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle15() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic15.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle16() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic16.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "대한민국 보물 제20호 : 성주사지 중앙 삼층 석탑 <br> 지정연도 : 1962년 1월 21일 <br>성주사지 금당지 뒤의 3기의 석탑 중 가운데에 있는 석탑이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle17() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic17.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "충청남도 유형문화재 제 139호  : 대천 한대돌다리 <br> 지정연도 : 1992년 8월 17일 <br>충청남도 보령시 대천천 하류에 있었던 다리이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle18() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic18.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "충청남도의 유형문화재 제158호 : 성보령 금강암 석불 및 비편 <br> 지정연도 : 2000년 9월 20일 <br>충청남도 보령시 금강암에 있는 석불과 비편이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle19() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic19.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "충청남도 유형문화재 제159호 : 보령 유격장군 청덕비 <br> 지정연도 : 2000년 9월 20일 <br>1598년 4월에 세운 유격장군(遊擊將軍) 계금(季金)의 청덕비이다. "; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_middle20() {
+            v_modal2.classList.remove("d-none");
+            modalImage.src = "../resources/images/이미지/relic20.jpeg"; // 이미지 업데이트
+            modalImage.classList.remove("d-none"); // 이미지 표시
+            modalImage.style.marginBottom = "20px";
+            modalImage.style.width = "300px"; // 원하는 크기로 조정 (예: 300px)
+            modalImage.style.height = "200px";
+            modalImage.style.border ="1px solid black";
+            modalContent.innerHTML = "충청남도 유형문화재 제210호 : 충청수영 내삼문 <br> 지정연도 : 2010년 12월 30일 <br>충청수영의 북동쪽에 있는 정면 3칸, 측면 1칸으로, 3칸 중 가운데 한칸을 높여 솟을지붕형태의 건축물이다."; // 함수 내부에서 사용
+            event.preventDefault();
+        }
+        function f_close2() {
+            v_modal2.classList.add("d-none");
+        }
+
+        function f_list() {
+            window.location.href = '99_개인과제_종류리스트.html';
+        }
+
+        function f_relic() {
+            window.location.href = '99_개인과제_about.html';
+        }
+
+        function f_login() {
+            window.location.href = '99_개인과제_로그인.html';
+        }
+
+        function f_home() {
+            window.location.href = 'home.html';
+        }
+
+        function f_about() {
+            window.location.href = '99_개인과제_유물에대해.html';
+        }
+
+        function f_search() {
+            window.location.href = '99_개인과제_search.html';
+        }
+
+    </script>
+</body>
+
+</html>

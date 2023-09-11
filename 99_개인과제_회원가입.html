@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인과제_로그인</title>
+
+    <style>
+        .container {
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+            background-image: url(https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/dIX4/image/ZVLncRKErtN-ecp5eBuPN7mLG8I.jpg);
+            overflow: hidden;
+        }
+
+        .member {
+            text-align: center;
+        }
+
+        .box {
+            width: 500px;
+            height: 600px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #ffffffcc;
+        }
+
+        .box>div>input[type="text"] {
+            width: 450px;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        .box>div>input[type="password"] {
+            width: 450px;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        .btn {
+            width: 300px;
+            height: 40px;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            background-color: skyblue;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="f_home()">HOME</button>
+    <div class="container">
+        <h1 class="member">회원 가입</h1>
+        <div class="box">
+            <div>
+                아이디 <br>
+                <input type="text" id="userId" placeholder="User ID">
+            </div>
+            <hr>
+            <div>
+                비밀번호 <br>
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <hr>
+            <div>
+                비밀번호 확인 <br>
+                <input type="password" id="confirmPassword" name="password" placeholder="Check Password">
+            </div>
+            <hr>
+            <div>
+                닉네임 <br>
+                <input type="text" id="userName" placeholder="User Name">
+            </div>
+            <hr>
+            <div>
+                생년월일 <br>
+                <input type="date" id="birthdate">
+            </div>
+            <hr>
+            <div>
+                성별 <br>
+                남성 <input type="checkbox"> 여성 <input type="checkbox">
+            </div>
+            <hr>
+            <div>
+                이메일 <br>
+                <input type="text" id="email" placeholder="E -Mail">
+            </div>
+            <hr>
+            <div class="btn-wrapper">
+                <button onclick="f_gologin()" class="btn"> 회원 가입 </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function f_home() {
+            window.location.href = '99_개인과제.html';
+        }
+
+        function f_gologin() {
+            // 회원가입 완료 알림창 표시
+            alert("회원가입이 완료되었습니다.");
+
+            // 입력한 정보를 localStorage에 저장
+            localStorage.setItem("userId", document.getElementById("userId").value);
+            localStorage.setItem("password", document.getElementById("password").value);
+            localStorage.setItem("userName", document.getElementById("userName").value);
+            localStorage.setItem("birthdate", document.getElementById("birthdate").value);
+            localStorage.setItem("email", document.getElementById("email").value);
+            window.location.href = '99_개인과제_로그인.html';
+        }
+
+        let v_member = {
+            userId: localStorage.getItem("userId"),
+            password: localStorage.getItem("password"),
+            userName: localStorage.getItem("userName"),
+            birthdate: localStorage.getItem("birthdate"),
+            email: localStorage.getItem("email")
+        };
+
+        console.log(v_member);
+
+    </script>
+
+</body>
+
+</html>

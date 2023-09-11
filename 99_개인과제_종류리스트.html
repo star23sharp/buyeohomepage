@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인과제_종류리스트</title>
+    <style>
+        .div {
+            border: 1px solid red;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button onclick="f_home()">HOME</button>
+        <!-- <button onclick="f_send()">문화재 리스트 가져오기</button> -->
+        <hr>
+        <div class="container">
+            <div>
+                <select id="selectLiter">
+                    <option value="5ℓ가격">전체</option>
+                    <option value="5ℓ가격">통일신라</option>
+                    <option value="10ℓ가격">조선시대</option>
+                    <option value="20ℓ가격">근대</option>
+                </select>
+                <input id="inputRegion" type="text">
+                <button onclick="f_send()">검색</button>
+                <button id="btnSort" onclick="f_sort()">정렬▼</button>
+            </div>
+            <div id="content"></div>
+        </div>
+        <hr>
+        <div class="area">
+
+        </div>
+    </div>
+
+    <script>
+        let v_list = JSON.parse(localStorage.getItem("Relic"));
+        console.log(v_list);
+
+        let v_area = document.querySelector(".area");
+
+        function f_send() {
+            for (let i = 0; i < v_list.length; i++) {
+                let v_str = "<p>" + v_list[i]["era"];
+                v_str += " | " + v_list[i]["bldgNm"];
+                v_str += " | " + v_list[i]["mngrNm"];
+                v_str += " | " + v_list[i]["dsgnYmd"];
+                v_str += " | " + v_list[i]["kind"] + "</p>";
+                v_area.innerHTML += v_str;
+            }
+
+        }
+        function f_home() {
+            // 새로운 페이지의 URL을 여기에 입력하세요
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+
+</html>
